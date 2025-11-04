@@ -1,6 +1,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include <unistd.h>
+#include <stdlib.h>
+
 int	ft_popen(const char *file, char *const argv[], char type)
 {
 	if (!file || !argv || (type != 'r' && type != 'w'))
@@ -75,10 +78,14 @@ void ft_putstr(const char *s)
 	while (*s)
 		write(STDOUT_FILENO, s++, 1);
 }
+
 int main() {
 	int fd = ft_popen("ls", (char *const[]){"ls", NULL}, 'r');
 
 	char *line;
 	while(line = get_next_line(fd))
 		ft_putstr(line);
+
+    int fd2 = ft_popen("cat", (char *const[]){"cat", NULL}, 'w');
+    write(fd2, "hello\n", 6);
 }

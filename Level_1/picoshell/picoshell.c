@@ -65,3 +65,15 @@ int picoshell(char **cmds[])
 
     return res;
 }
+
+int main()
+{
+    char *cmd1[] =  {"ls", "-la", NULL};
+    char *cmd2[] =  {"grep", ".c", NULL};
+    char *cmd3[] =  {"wc", "-l", NULL};
+    char **cmds[] = { cmd1, cmd2, cmd3, NULL };
+
+	if (picoshell(cmds))
+        return printf("failllled\n"), 1;
+    return 0;
+}
